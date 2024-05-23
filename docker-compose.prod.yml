@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: ndbackend
+    build: .
+    restart: always
+    tty: true
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    working_dir: /usr/app
+    command: >
+      make start
+    networks:
+      - ndnetwork
+
+networks:
+  ndnetwork:
